@@ -1,0 +1,55 @@
+    def xuly_luu(self):
+        name = self.lineEditName.text()  # Tên nguyên liệu
+        supplier = self.lineEditSupplier.text()  # Nhà cung cấp
+        import_price = self.lineEditImportPrice.text()  # Giá nhập (VND/kg)
+        import_qty = self.lineEditQuantityImported.text() # Số lượng nhập trong ngày
+        sell_price = self.lineEditSellingPrice.text() # giá bán
+        sold_qty = self.lineEditQuantitySold.text()  # Số lượng bán được trong ngày
+        use_day = self.lineEditExpectedUsageDays.text()
+        if self.radioButtonShortterm.isChecked():
+            type='Ngắn hạn'
+        else:
+            type="Dài hạn"
+        mt=Material(name,type,supplier,import_price,import_qty,sell_price,sold_qty,use_day)
+        self.materials.append(mt)
+        jff = JsonFileFactory()
+        filename = '../dataset/testdoan.json'
+        jff.write_data(self.materials, filename)
+        self.hienthi_sp_len_giaodien()
+    def xuly_xoa(self):
+        name=self.lineEditName.text()
+        dlg=QMessageBox(self.MainWindow)
+        dlg.setWindowTitle("Xác nhận xóa")
+        dlg.setText(f"Xác nhận xóa [{name}] ?")
+        dlg.setIcon(QMessageBox.Icon.Question)
+        buttons=QMessageBox.StandardButton.Yes|QMessageBox.StandardButton.No
+        dlg.setStandardButtons(buttons)
+        button=dlg.exec()
+        if button==QMessageBox.StandardButton.No:
+            return
+        if self.selected_material!=None:
+            self.materials.remove(self.selected_material)
+            jff = JsonFileFactory()
+            filename = '../dataset/testdoan.json'
+            jff.write_data(self.materials, filename)
+        self.hienthi_sp_len_giaodien()
+    def xuly_tong(self):
+        total_material_cost = sum(
+            int(mt.import_price) * int(mt.import_qty) for mt in self.materials if mt.import_price and mt.import_qty)
+        total_revenue = sum(
+            int(mt.sell_price) * int(mt.sold_qty) for mt in self.materials if mt.sell_price and mt.sold_qty)
+        profit = total_revenue - total_material_cost
+        return total_material_cost, total_revenue, profit
+    def show_daily_summary(self):
+        if not self.daily_summary_window:
+            self.daily_summary_window = QMainWindow()
+            self.ui_daily_summary = DailySummaryExt()  # Dùng class mở rộng
+            self.ui_daily_summary.setupUi(self.daily_summary_window)
+        # Tính toán tổng hợp dữ liệu
+        total_material_cost, total_revenue, profit = self.xuly_tong()
+        # Hiển thị dữ liệu lên giao diện
+        self.ui_daily_summary.lineEdit_MaterialCost.setText(str(total_material_cost))
+        self.ui_daily_summary.lineEdit_Revenue.setText(str(total_revenue))
+        self.ui_daily_summary.lineEdit_Profit.setText(str(profit))
+        # Hiển thị cửa sổ
+        self.ui_daily_summary.showWindow()
