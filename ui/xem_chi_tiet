@@ -1,0 +1,9 @@
+def xem_chi_tiet(self, mtrs):
+    self.lineEditName.setText(mtrs.Name)
+    self.lineEditSupplier.setText(mtrs.Supplier)
+    self.lineEditImportPrice.setText(str(mtrs.ImportPrice))
+    self.lineEditQuantityImported.setText(str(mtrs.QuantityImported))
+    self.lineEditSellingPrice.setText(str(mtrs.SellingPrice))
+    self.lineEditQuantitySold.setText(str(mtrs.QuantitySold))
+    self.lineEditExpectedUsageDays.setText(str(mtrs.EditExpectedUsageDays))
+    self.selected_material = mtrs
