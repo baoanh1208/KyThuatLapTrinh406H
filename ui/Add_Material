@@ -1,0 +1,62 @@
+def __init__(self):
+    self.dc = DataConnector()
+    self.materials = self.dc.get_all_materials()
+    self.selected_material = None
+    # Nhấn Enter trên ô tên nguyên liệu để thêm
+    self.lineEditName.returnPressed.connect(self.add_material)
+def add_material(self):
+    """Thêm nguyên liệu mới vào file JSON và hiển thị lên giao diện"""
+
+    # Lấy dữ liệu từ các ô nhập trong giao diện
+    material_name = self.lineEditName.text().strip()
+    supplier = self.lineEditSupplier.text().strip()
+    import_price = self.lineEditImportPrice.text().strip()
+    quantity_imported = self.lineEditQuantityImported.text().strip()
+    selling_price = self.lineEditSellingPrice.text().strip()
+    quantity_sold = self.lineEditQuantitySold.text().strip()
+    expected_usage_days = self.lineEditExpectedUsageDays.text().strip()
+
+    # Kiểm tra dữ liệu đầu vào
+    if not material_name or not supplier or not import_price or not quantity_imported:
+        QMessageBox.warning(self, "Warning", "Vui lòng nhập đầy đủ thông tin nguyên liệu!")
+        return
+
+    # Đảm bảo file JSON có dữ liệu trước khi đọc
+    file_path = "dataset/material.json"
+    if not os.path.exists(file_path):
+        materials = []
+    else:
+        with open(file_path, "r", encoding="utf-8") as file:
+            try:
+                materials = json.load(file)
+            except json.JSONDecodeError:
+                materials = []
+
+    # Tạo một dictionary cho nguyên liệu mới
+    new_material = {
+        "name": material_name,
+        "supplier": supplier,
+        "import_price": import_price,
+        "quantity_imported": quantity_imported,
+        "selling_price": selling_price,
+        "quantity_sold": quantity_sold,
+        "expected_usage_days": expected_usage_days
+    }
+
+    # Thêm nguyên liệu vào danh sách
+    materials.append(new_material)
+
+    # Ghi lại danh sách vào file JSON
+    with open(file_path, "w", encoding="utf-8") as file:
+        json.dump(materials, file, indent=4, ensure_ascii=False)
+
+    QMessageBox.information(self, "Success", "Nguyên liệu đã được thêm thành công!")
+
+    # Xóa nội dung các ô nhập sau khi thêm thành công
+    self.lineEditName.clear()
+    self.lineEditSupplier.clear()
+    self.lineEditImportPrice.clear()
+    self.lineEditQuantityImported.clear()
+    self.lineEditSellingPrice.clear()
+    self.lineEditQuantitySold.clear()
+    self.lineEditExpectedUsageDays.clear()
