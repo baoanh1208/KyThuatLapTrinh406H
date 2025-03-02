@@ -1,0 +1,7 @@
+def hienthi_len_giaodien(self):
+    self.clearLayout(self.verticalLayoutButton)
+    for i in range(len(self.materials)):
+        mtrs=self.materials[i]
+        btn=QPushButton(text=str(mtrs))
+        self.verticalLayoutButton.addWidget(btn)
+        btn.clicked.connect(functools.partial(self.xem_chi_tiet,mtrs))
