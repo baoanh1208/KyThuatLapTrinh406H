@@ -8,6 +8,7 @@ class LoginMainWindowExt(Ui_MainWindow):
 
     def setupSignalAndSlot(self):
         self.pushButtonLogin.clicked.connect(self.process_login)
+        self.pushButtonExit.clicked.connect(self.process_exit)
     def process_login(self):
         dc=DataConnector()
         uid = self.lineEditUserName.text()
@@ -23,6 +24,15 @@ class LoginMainWindowExt(Ui_MainWindow):
             self.msg = QMessageBox(self.MainWindow)
             self.msg.setText("Đăng nhập thất bại")
             self.msg.exec()
+    def process_exit(self):
+        msgbox = QMessageBox(self.MainWindow)
+        msgbox.setText("Chắc chắn thoát?")
+        msgbox.setWindowTitle("Xác nhận thoát")
+        msgbox.setIcon(QMessageBox.Icon.Critical)
+        buttons = QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
+        msgbox.setStandardButtons(buttons)
+        if msgbox.exec() == QMessageBox.StandardButton.Yes:
+            exit()
 
 
 
