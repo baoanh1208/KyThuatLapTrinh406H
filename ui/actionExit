@@ -1,0 +1,8 @@
+    def exit_program(self):
+        msgbox = QMessageBox(self.MainWindow)
+        msgbox.setText("Bạn có chắc muốn thoát phần mềm không?")
+        msgbox.setWindowTitle("Xác nhận thoát")
+        msgbox.setIcon(QMessageBox.Icon.Question)
+        msgbox.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if msgbox.exec() == QMessageBox.StandardButton.Yes:
+            exit()
