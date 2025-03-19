@@ -100,7 +100,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
       <x>10</x>
       <y>130</y>
       <width>381</width>
-      <height>181</height>
+      <height>241</height>
      </rect>
     </property>
     <property name="font">
@@ -187,6 +187,114 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
       <string notr="true">background-color: rgb(255, 177, 161);</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>110</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>UserName:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditEmpName_2">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>110</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 177, 161);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>150</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Password:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditEmpName_3">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>150</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 177, 161);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditEmpName_4">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>190</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 177, 161);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Position:</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="pushButtonSearch">
     <property name="geometry">
@@ -233,7 +341,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>380</y>
+      <y>390</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -264,7 +372,7 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>380</y>
+      <y>390</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -288,68 +396,6 @@ font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
      <size>
       <width>21</width>
       <height>21</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonEdit">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>330</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(195, 211, 159);</string>
-    </property>
-    <property name="text">
-     <string>Edit</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../images/image_edit.png</normaloff>../images/image_edit.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonAdd">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>330</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>15</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(195, 211, 159);</string>
-    </property>
-    <property name="text">
-     <string>Add</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../images/image_add.png</normaloff>../images/image_add.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>28</width>
-      <height>28</height>
      </size>
     </property>
    </widget>
